@@ -1,15 +1,17 @@
 package com.cwh.urlshortingserviceapi.api.url;
 
-import java.util.Hashtable;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
 @Service
 public class UrlShortingService {
-    private Hashtable<String, UrlData> urlHashtable;
+    private Set<Object> urlHashSet;
 
     public UrlShortingService() {
-        urlHashtable = new Hashtable<>();
+        urlHashSet = Collections.synchronizedSet(new HashSet<>());
     }
 
     public UrlData getUrlData(String originalUrl) {

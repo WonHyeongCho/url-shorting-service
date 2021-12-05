@@ -2,6 +2,7 @@ package com.cwh.urlshortingserviceapi.api.url;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Objects;
 
 import org.springframework.util.StringUtils;
 
@@ -42,16 +43,17 @@ public class UrlData {
         if(o == null || this.getClass() != o.getClass()) return false;
 
         UrlData shortenUrlObj = (UrlData) o;
-        
-
+    
+        if(!(this.shortenUrl.equals(shortenUrlObj.shortenUrl) && this.originalUrl.equals(shortenUrlObj.originalUrl))) return false;
         
         return true;
     }
 
     @Override
     public int hashCode() {
-
-        return 1;
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append(originalUrl.substring(0 ,4));
+        stringBuffer.append(shortenUrl.substring(0, 4));
+        return Objects.hashCode(stringBuffer.toString());
     }
-
 }
