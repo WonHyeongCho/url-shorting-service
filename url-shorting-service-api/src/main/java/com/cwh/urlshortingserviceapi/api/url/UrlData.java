@@ -9,9 +9,11 @@ import org.springframework.util.StringUtils;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
 @Builder
+@ToString
 @AllArgsConstructor
 public class UrlData {
     private long inquiryCount;
@@ -38,6 +40,14 @@ public class UrlData {
         }
     }
 
+    public void incInquiryCount() {
+        inquiryCount++;
+    }
+
+    public String getHashKey() {
+        return makeHashKey();
+    }
+
     @Override
     public boolean equals(Object o) {
         if(o == null || this.getClass() != o.getClass()) return false;
@@ -51,9 +61,16 @@ public class UrlData {
 
     @Override
     public int hashCode() {
+        return Objects.hashCode(makeHashKey());
+    }
+
+    private String makeHashKey() {
+        if(!StringUtils.hasLength(originalUrl) || !StringUtils.hasLength(shortenUrl)) return null;
+
         StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append(originalUrl.substring(0 ,4));
+        stringBuffer.append(originalUrl.substring(originalUrl.length()-4, originalUrl.length()));
         stringBuffer.append(shortenUrl.substring(0, 4));
-        return Objects.hashCode(stringBuffer.toString());
+
+        return stringBuffer.toString();
     }
 }

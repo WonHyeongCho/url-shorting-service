@@ -2,6 +2,8 @@ package com.cwh.urlshortingserviceapi.api.url;
 
 import java.util.Map;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,11 @@ public class UrlShortingController {
     @PostMapping("/url")
     public Object registerUrl(@RequestBody Map<String, Object> param) {
         String originalUrl = (String)param.get("originalUrl");
-        return urlShortingService.setUrlData(originalUrl);
+        return urlShortingService.registerUrlData(originalUrl);
+    }
+
+    @GetMapping("/url/{shortenUrl}")
+    public Object inquiryUrlData(@PathVariable("shortenUrl") String shortenUrl) {
+        return urlShortingService.inquiryUrlData(shortenUrl);
     }
 }
