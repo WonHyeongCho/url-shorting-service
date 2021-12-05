@@ -19,8 +19,16 @@ class UrlShortingServiceApiApplicationTests {
 		MessageDigest messageDigest;
 		try {
 			messageDigest = MessageDigest.getInstance("SHA-256");
-			messageDigest.update(originalUrl.getBytes());
-			shortenUrl = new String(messageDigest.digest()).substring(0, 9);
+            messageDigest.update(originalUrl.getBytes());
+            byte[] byteArray = messageDigest.digest();
+
+            StringBuffer stringBuffer = new StringBuffer(); 
+            
+            for(int i = 0 ; i < byteArray.length ; i++){
+                stringBuffer.append(Integer.toString((byteArray[i]&0xff) + 0x100, 16).substring(1));
+            }
+
+            shortenUrl = stringBuffer.toString().substring(0, 8);
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

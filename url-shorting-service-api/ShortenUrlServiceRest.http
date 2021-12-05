@@ -1,0 +1,8 @@
+POST http://localhost:8080/short/url
+Content-Type: application/json
+Accept-Charset: UTF-8
+
+{
+    "originalUrl":"https://www.naver.com/Ndddadssii/eqwdda=="
+}
+

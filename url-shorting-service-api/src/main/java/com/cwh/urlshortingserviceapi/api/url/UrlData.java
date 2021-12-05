@@ -5,32 +5,34 @@ import java.security.NoSuchAlgorithmException;
 
 import org.springframework.util.StringUtils;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 
 @Getter
+@Builder
+@AllArgsConstructor
 public class UrlData {
     private long inquiryCount;
     private String originalUrl;
     private String shortenUrl;
 
-    public UrlData(String originalUrl) {
-        this.originalUrl = originalUrl;
-    }
-
-    public UrlData(String originalUrl, String shortenUrl) {
-        this.originalUrl = originalUrl;
-        this.shortenUrl = shortenUrl;
-    }
-    
     public void makeShortenUrl() {
         if(!StringUtils.hasLength(originalUrl)) return;
 
         try {
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
             messageDigest.update(originalUrl.getBytes());
-            shortenUrl = new String(messageDigest.digest()).substring(0, 9);
-        } catch (NoSuchAlgorithmException e) {
+            byte[] byteArray = messageDigest.digest();
+
+            StringBuffer stringBuffer = new StringBuffer(); 
             
+            for(int i = 0; i < byteArray.length; i++){
+                stringBuffer.append(Integer.toString((byteArray[i]&0xff) + 0x100, 16).substring(1));
+            }
+
+            shortenUrl = stringBuffer.toString().substring(0, 8);
+        } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
     }
@@ -45,5 +47,11 @@ public class UrlData {
         
         return true;
     }
-    
+
+    @Override
+    public int hashCode() {
+
+        return 1;
+    }
+
 }
