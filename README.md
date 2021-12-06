@@ -74,8 +74,11 @@ $ nohup java -jar {설치경로}/url-shortening-service-api/build/libs/url-short
 
 - npm install
 $ cd {설치경로}/url-shortening-service-web
+$ npm add webpack@latest --> package.json 파일에서 webpack 버전 4.0.0 으로 변경
 $ npm install
 
 - npm build
 $ npm run build
 
+- nginx html 폴더로 dist 폴더 옮기기
+$ cp -r dist/ /usr/share/nginx/html/
