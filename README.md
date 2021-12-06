@@ -80,3 +80,5 @@ $ npm install
 - npm build
 $ npm run build
 
+- nginx html 폴더로 dist 폴더 옮기기
+$ cp -r dist/ /usr/share/nginx/html/
