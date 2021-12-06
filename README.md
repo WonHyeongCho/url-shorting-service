@@ -70,6 +70,9 @@ $ {설치경로}/url-shortening-service-api/gradlew build
 - 자바 실행
 $ nohup java -jar {설치경로}/url-shortening-service-api/build/libs/url-shorting-service-api-0.0.1-SNAPSHOT.jar > url-shorting-service-api.log 2>&1 &
 
-6. Shortening Url Service WEB 설치
+## 6. Shortening Url Service WEB 설치
 
-- vue 
+- npm build
+$ cd {설치경로}/url-shortening-service-web
+$ npm run build
+
