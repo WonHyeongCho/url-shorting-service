@@ -1,19 +1,24 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <img alt="Vue logo" src="./assets/logo.png">
+    <Main msg="~~~~"/>
   </div>
 </template>
 
 <script>
+import Main from './components/Main'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Main
+  }
 }
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

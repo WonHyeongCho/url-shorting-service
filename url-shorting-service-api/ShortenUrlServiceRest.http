@@ -6,3 +6,5 @@ Accept-Charset: UTF-8
     "originalUrl":"https://www.naver.com/Ndddadssii/eqwdda=="
 }
 
+GET http://localhost:8080/short/url/7f00155b
+

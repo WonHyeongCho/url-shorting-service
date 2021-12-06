@@ -1,20 +1,23 @@
 {
   "name": "url-shorting-service-web",
   "version": "1.0.0",
+  "private": true,
   "description": "url-shorting-service-web",
   "author": "WonhyeongCho <tmzkdls7989@gmail.com>",
-  "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "npm run dev",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
     "lint": "eslint --ext .js,.vue src",
-    "build": "node build/build.js"
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "start": "npm run dev"
   },
   "dependencies": {
-    "vue": "^2.5.2",
+    "axios": "^0.24.0",
+    "vue": "^2.6.11",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
+    "@vue/cli-service": "~4.5.15",
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.22.1",
     "babel-eslint": "^8.2.1",
@@ -55,7 +58,7 @@
     "url-loader": "^0.5.8",
     "vue-loader": "^13.3.0",
     "vue-style-loader": "^3.0.1",
-    "vue-template-compiler": "^2.5.2",
+    "vue-template-compiler": "^2.6.11",
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.9.1",
@@ -64,10 +67,5 @@
   "engines": {
     "node": ">= 6.0.0",
     "npm": ">= 3.0.0"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+  }
 }

@@ -3,25 +3,28 @@ package com.cwh.urlshortingserviceapi.api.url;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
+import java.util.Optional;
 
 import org.springframework.util.StringUtils;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 
 @Getter
-@Builder
 @ToString
 @AllArgsConstructor
+@Slf4j
 public class UrlData {
     private long inquiryCount;
     private String originalUrl;
     private String shortenUrl;
 
-    public void makeShortenUrl() {
-        if(!StringUtils.hasLength(originalUrl)) return;
+    public static Optional<String> makeShortenUrl(String originalUrl) {
+        if(!StringUtils.hasLength(originalUrl)) return Optional.empty();
+
+        String shortenUrl = null;
 
         try {
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
@@ -38,14 +41,12 @@ public class UrlData {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
+
+        return Optional.ofNullable(shortenUrl);
     }
 
     public void incInquiryCount() {
         inquiryCount++;
-    }
-
-    public String getHashKey() {
-        return makeHashKey();
     }
 
     @Override
