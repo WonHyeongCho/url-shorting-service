@@ -34,12 +34,15 @@ $ sudo chmod +x /etc/profile.d/gradle.sh
 - 환경 변수 로딩
 $ source /etc/profile.d/gradle.sh
 
-
 2. Shortening Url Service 설치
 
 - 깃 클론
 $ git clone https://github.com/WonHyeongCho/url-shorting-service.git
 
 - Gradle Build
-$ ${설치경로}/url-shortening-service-api/gradle build
+$ {설치경로}/url-shortening-service-api/gradlew build
+
+- 자바 실행
+$ nohup java -jar {설치경로}/url-shortening-service-api/build/libs/url-shorting-service-api-0.0.1-SNAPSHOT.jar > url-shorting-service-api.log 2>&1 &
+
 
