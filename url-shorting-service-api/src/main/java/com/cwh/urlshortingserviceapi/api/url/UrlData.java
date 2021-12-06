@@ -10,12 +10,10 @@ import org.springframework.util.StringUtils;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.slf4j.Slf4j;
 
 @Getter
 @ToString
 @AllArgsConstructor
-@Slf4j
 public class UrlData {
     private long inquiryCount;
     private String originalUrl;

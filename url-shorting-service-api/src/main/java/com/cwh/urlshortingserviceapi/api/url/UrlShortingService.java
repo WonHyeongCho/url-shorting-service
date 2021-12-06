@@ -10,10 +10,7 @@ import javax.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import lombok.extern.slf4j.Slf4j;
-
 @Service
-@Slf4j
 public class UrlShortingService {
     private Map<String, UrlData> urlHashMap;
 
