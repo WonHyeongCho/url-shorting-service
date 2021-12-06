@@ -72,7 +72,10 @@ $ nohup java -jar {설치경로}/url-shortening-service-api/build/libs/url-short
 
 ## 6. Shortening Url Service WEB 설치
 
-- npm build
+- npm install
 $ cd {설치경로}/url-shortening-service-web
+$ npm install
+
+- npm build
 $ npm run build
 
