@@ -9,7 +9,7 @@ url-shorting-service
 $ yum list java*jdk-devel
 
 - Java8 설치
-$ yum install java-1.8.0-openjdk-devel.x86_64
+$ yum install -y java-11-openjdk-devel.x86_64
 
 - Java 버전 확인
 $ javac -version
@@ -38,4 +38,6 @@ $ source /etc/profile.d/gradle.sh
 - 깃 클론
 $ git clone https://github.com/WonHyeongCho/url-shorting-service.git
 
-- 
+- Gradle Build
+$ ${설치경로}/url-shortening-service-api/gradlew build
+
