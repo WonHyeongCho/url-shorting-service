@@ -18,13 +18,15 @@ $ java -version
 2. Gradle 설치
 
 - Gradle 다운로드
-$ wget https://services.gradle.org/distributions/gradle-5.0-bin.zip -P /tmp
+$ wget https://services.gradle.org/distributions/gradle-7.3.1-bin.zip -P /tmp
 
 - 압축 풀기
-$ sudo unzip -d /opt/gradle /tmp/gradle-5.0-bin.zip
+$ sudo unzip -d /opt/gradle /tmp/gradle-7.3.1-bin.zip
 
 - 환경변수 설정
 $ sudo nano /etc/profile.d/gradle.sh
+export GRADLE_HOME=/opt/gradle/gradle-7.3.1
+export PATH=${GRADLE_HOME}/bin:${PATH}
 
 - 쉘 파일 권한 변경
 $ sudo chmod +x /etc/profile.d/gradle.sh
@@ -39,5 +41,5 @@ $ source /etc/profile.d/gradle.sh
 $ git clone https://github.com/WonHyeongCho/url-shorting-service.git
 
 - Gradle Build
-$ ${설치경로}/url-shortening-service-api/gradlew build
+$ ${설치경로}/url-shortening-service-api/gradle build
 
